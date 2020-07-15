@@ -72,20 +72,21 @@ class DoublyLinkedList:
         # decrement the length of the DLL
         self.length -= 1
         # delete the head
-        if self.head is None:
+        if(self.head == None):
             return
-        # if head.next is not None
-        if self.head.next is not None:
-            # set head.next's prev to None
-            self.head.next.prev = None
-            # set head to head.next
-            self.head = self.head.next
-            # else (if head.next is None)
-        elif self.head.next is None:
-            # set head and tail to None
-            self.head = None
-            self.tail = None
-        # return the value
+        else:
+            # if head.next is not None
+            if self.head.next is not None:
+                # set head.next's prev to None
+                self.head.next.prev = None
+                # set head to head.next
+                self.head = self.head.next
+                # else (if head.next is None)
+            elif self.head.next is None:
+                # set head and tail to None
+                self.head = None
+                self.tail = None
+            # return the value
         return saved
 
     """
@@ -96,22 +97,21 @@ class DoublyLinkedList:
 
     def add_to_tail(self, value):
         # create instance of ListNode with value
-        new_node = ListNode(value)
+        creation = ListNode(value)
         # increment the DLL length attribute
         self.length += 1
         # if DLL is empty
-        if not self.head and not self.tail:
+        if(self.head == None):
             # set head and tail to the new node instance
-            self.head = new_node
-            self.tail = self.head
+            self.head = self.tail = creation
         # if DLL is not empty
-        else:
+        elif(self.tail != None):
             # set new node's prev to current tail
-            new_node.prev = self.tail
+            creation.prev = self.tail
             # set tail's next to new node
-            self.tail.next = new_node
+            self.tail.next = creation
             # set tail to the new node
-            self.tail = new_node
+            self.tail = creation
 
     """
     Removes the List's current tail node, making the 
