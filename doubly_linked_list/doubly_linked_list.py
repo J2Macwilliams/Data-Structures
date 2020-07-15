@@ -48,8 +48,7 @@ class DoublyLinkedList:
         # if DLL is empty
         if self.head is None:
             # set head and tail to the new node instance
-            self.head = new_node
-            self.tail = new_node
+            self.head = self.tail = new_node
         # if DLL is not empty
         else:
             # set new node's next to current head
@@ -68,7 +67,7 @@ class DoublyLinkedList:
 
     def remove_from_head(self):
         # store the value of the head
-        saved = self.head
+        saved = self.head.value
         # decrement the length of the DLL
         self.length -= 1
         # delete the head
@@ -84,8 +83,7 @@ class DoublyLinkedList:
                 # else (if head.next is None)
             elif self.head.next is None:
                 # set head and tail to None
-                self.head = None
-                self.tail = None
+                self.head = self.tail = None
             # return the value
         return saved
 
@@ -121,7 +119,7 @@ class DoublyLinkedList:
 
     def remove_from_tail(self):
         # store the value of the tail
-        saved = self.tail
+        saved = self.tail.value
         # decrement the length of the DLL
         self.length -= 1
         # delete the tail
@@ -136,8 +134,7 @@ class DoublyLinkedList:
         # else (if tail.prev is None)
         elif self.tail.prev is None:
             # set head and tail to None
-            self.head = None
-            self.tail = None
+            self.head = self.tail = None
         return saved
 
     """
