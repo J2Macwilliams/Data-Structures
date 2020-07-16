@@ -63,7 +63,6 @@ class Queue:
         # add item to the tail through LinkedList methods
         self.storage.add_to_tail(value)
             
-
     def dequeue(self):
         # Establish empty size of List
         if self.storage.head == None:
@@ -72,5 +71,3 @@ class Queue:
             # Subtract as removing items
             self.size -= 1
             return self.storage.remove_head()
-        
-

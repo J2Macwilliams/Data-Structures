@@ -73,7 +73,3 @@ class Queue:
             self.size -= 1
             return self.storage.remove_head()
         
-my_queue = Queue()
-print(my_queue.size)
-my_queue.enqueue(2)
-print(len(my_queue))
