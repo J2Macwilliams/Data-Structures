@@ -175,10 +175,12 @@ class BSTNode:
 
         # check if we can move left
         if self.left is not None:
+            # move to the very end 
             self.left.post_order_dft(node)
 
         # check if we can move right
         if self.right is not None:
+            # move to the very end
             self.right.post_order_dft(node)
 
         # visit the node and print it's value
