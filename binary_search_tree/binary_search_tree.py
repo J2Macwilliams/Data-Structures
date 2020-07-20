@@ -9,6 +9,10 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+from queue import Queue
+from stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -83,30 +87,104 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # if the current Node is None
+        # reached the end of the recursion
+        if self is None:
+            return self
+            
+        # check if we can move left
+        if self.left is not None:
+            self.left.in_order_print(node)
+
+        # visit the node and print it's value
+        print(self.value)
+
+        # check if we can move right
+        if self.right is not None:
+            self.right.in_order_print(node)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # establish a queue from the imported class
+        my_queue = Queue()
+        # place the root in the queue
+        my_queue.enqueue(node)
+
+        # establish a while loop
+        # checking for the size of the queue
+        while my_queue.size > 0:
+            # dequeue bottom item
+            current = my_queue.dequeue()
+            # print the item
+            print(current.value)
+
+            # place current items left node in queue if not None
+            if current.left is not None:
+                my_queue.enqueue(current.left)
+            # place current items right node in queue if not None
+            if current.right is not None:
+                my_queue.enqueue(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # initialize and empty stack
+        my_stack = Stack()
+        # push the root node onto the stack
+        my_stack.push(node)
+
+        # create a while loop to manage iteration
+        while my_stack.size > 0:
+            # pop item off the stack
+            current = my_stack.pop()
+            # print the current item
+            print(current.value)
+
+            # if there is a right subtree
+            if current.right is not None:
+                # push item onto the stack
+                my_stack.push(current.right)
+
+            # if there is a left subtree
+            if current.left is not None:
+                # push item onto the stack
+                my_stack.push(current.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        # visit root node
+        if self is None:
+            return
+        print(self.value)
+        if self.left is not None:
+            self.left.pre_order_dft(node)
+        if self.right is not None:
+            self.right.pre_order_dft(node)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        # if the current Node is None
+        # reached the end of the recursion
+        if self is None:
+            return self
 
-my_tree = BSTNode(5)
-my_tree.insert(4)
-my_tree.insert(22)
-print(my_tree.get_max())
+        # check if we can move left
+        if self.left is not None:
+            # move to the very end 
+            self.left.post_order_dft(node)
+
+        # check if we can move right
+        if self.right is not None:
+            # move to the very end
+            self.right.post_order_dft(node)
+
+        # visit the node and print it's value
+        print(self.value)
+
+            
+        
